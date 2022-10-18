@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on darwin)" generated="20221018 16:06:02.650" rpa="false" schemaversion="3">
+<suite id="s1" name="Assignment1" source="/Users/kookwangs/Desktop/demo-robot/testcases/assignment1/assignment1.robot">
+<test id="s1-t1" name="Get Request Test" line="12">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session_1</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221018 16:06:02.871" level="INFO">Creating Session using : alias=session_1, url=https://petstore.swagger.io, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221018 16:06:02.870" endtime="20221018 16:06:02.871"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${json_2}</var>
+<arg>id=0 name=string</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221018 16:06:02.895" level="INFO">${json_2} = {'id': '0 name=string'}</msg>
+<status status="PASS" starttime="20221018 16:06:02.894" endtime="20221018 16:06:02.895"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${json_1}</var>
+<arg>id=9222968140497181000</arg>
+<arg>category=&amp;{json_2}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221018 16:06:02.896" level="INFO">${json_1} = {'id': '9222968140497181000', 'category': {'id': '0 name=string'}}</msg>
+<status status="PASS" starttime="20221018 16:06:02.895" endtime="20221018 16:06:02.896"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response_1}</var>
+<arg>session_1</arg>
+<arg>${path}</arg>
+<arg>json=${json_1}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20221018 16:06:04.307" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/findByStatus 
+ path_url=/v2/pet/findByStatus 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
+ body=b'{"id": "9222968140497181000", "category": {"id": "0 name=string"}}' 
+ </msg>
+<msg timestamp="20221018 16:06:04.308" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/findByStatus 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 18 Oct 2022 09:06:04 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'close', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body=[] 
+ </msg>
+<msg timestamp="20221018 16:06:04.308" level="INFO">/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20221018 16:06:04.308" level="INFO">${response_1} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221018 16:06:02.896" endtime="20221018 16:06:04.308"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response_1.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20221018 16:06:04.313" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20221018 16:06:04.309" endtime="20221018 16:06:04.313"/>
+</kw>
+<status status="PASS" starttime="20221018 16:06:02.869" endtime="20221018 16:06:04.313"/>
+</test>
+<status status="PASS" starttime="20221018 16:06:02.653" endtime="20221018 16:06:04.316"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Assignment1">Assignment1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
